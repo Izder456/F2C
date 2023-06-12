@@ -1,17 +1,13 @@
-;; define function (defun) to convert fahrenheit to celsius
+;; Define function to convert Fahrenheit to Celsius
 (defun fahrenheit-to-celsius (temperature)
-  (/ (* (- temperature 32) 5) 9)
-)
+  (/ (* (- temperature 32) 5) 9))
 
 ;; Handle I/O
-(format t "Enter the temperature in Fahrenheit: ")
-(let ((fahrenheit (parse-integer (read-line))))
-  (let ((celsius (fahrenheit-to-celsius fahrenheit)))
-    (if (integerp celsius) ;; Conditional output
-        ;; If integer, output as integer
+(format t "Enter the temperature in Fahrenheit: ") ;; Prompt user for input
+(let ((fahrenheit (parse-integer (read-line)))) ;; Read user input and store it in 'fahrenheit'
+  (let ((celsius (fahrenheit-to-celsius fahrenheit))) ;; Convert Fahrenheit to Celsius
+    (if (integerp celsius) ;; Check if the result is an integer
+        ;; Output integer Celsius temperature
         (format t "Equivalent Celsius temperature: ~d~%" celsius)
-        ;; If float, output truncated
-        (format t "Equivalent Celsius temperature: ~,1f~%" celsius)
-    )
-  )
-)
+        ;; Output float Celsius temperature (trunc to 1 decimal)
+        (format t "Equivalent Celsius temperature: ~,1f~%" celsius))))
